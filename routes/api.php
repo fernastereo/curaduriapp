@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+Route::resource('curadurias', 'Curaduria\CuraduriaController', ['except' => ['create', 'edit', 'destroy']]);
+Route::resource('expedientes', 'Expediente\ExpedienteController', ['only' => ['index', 'show']]);
