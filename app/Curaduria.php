@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Ciudad;
 use Illuminate\Database\Eloquent\Model;
 
 class Curaduria extends Model
@@ -28,5 +29,9 @@ class Curaduria extends Model
     public function generarRadicado(){
         //Esta funcion debe retornar el numero de radicado a guardar (ultimo + 1) de acuerdo a la curaduria que lo haya solicitado
         return 1;
+    }
+
+    public function ciudad(){
+        return $this->belongsTo(Ciudad::class);
     }
 }
