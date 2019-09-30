@@ -24,4 +24,9 @@ class Curaduria extends Model
     public function estaActiva(){
         return $this->status == Curaduria::CURADURIA_ACTIVA;
     }
+
+    public function generarRadicado(){
+        //Esta funcion debe retornar el numero de radicado a guardar (ultimo + 1) de acuerdo a la curaduria que lo haya solicitado
+        return 1;
+    }
 }
