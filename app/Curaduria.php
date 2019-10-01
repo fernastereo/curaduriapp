@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\User;
 use App\Ciudad;
+use App\Expediente;
 use Illuminate\Database\Eloquent\Model;
 
 class Curaduria extends Model
@@ -11,19 +13,21 @@ class Curaduria extends Model
     const CURADURIA_INACTIVA = 'INACTIVA';
 
     protected $fillable = [
-        'num_curaduria',
         'ciudad_id',
+        'numero',
         'curador',
         'idcurador',
         'direccion',
         'telefono',        
         'email',
+        'web',
+        'logo',
         'fechaini',
-        'status'
+        'estado'
     ];
 
     public function estaActiva(){
-        return $this->status == Curaduria::CURADURIA_ACTIVA;
+        return $this->estado == Curaduria::CURADURIA_ACTIVA;
     }
 
     public function generarRadicado(){
@@ -33,5 +37,13 @@ class Curaduria extends Model
 
     public function ciudad(){
         return $this->belongsTo(Ciudad::class);
+    }
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
+
+    public function expedientes(){
+        return $this->hasMany(Expediente::class);
     }
 }

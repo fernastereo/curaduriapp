@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Curaduria;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'verified', 'verification_token', 'admin'
+        'name', 'email', 'password', 'verified', 'verification_token'
     ];
 
     /**
@@ -46,5 +47,9 @@ class User extends Authenticatable
 
     public static function generarVerificationToken(){
         return str_random(40);
+    }
+
+    public function curaduria(){
+        return $this->belongsTo(Curaduria::class);
     }
 }
