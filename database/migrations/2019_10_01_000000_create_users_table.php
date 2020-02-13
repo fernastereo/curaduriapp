@@ -22,8 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('verified')->default(User::USUARIO_NO_VERIFICADO);
             $table->string('verification_token')->nullable();
+            $table->unsignedBigInteger('curaduria_id');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('curaduria_id')->references('id')->on('curadurias');
         });
     }
 

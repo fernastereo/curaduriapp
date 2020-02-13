@@ -10,15 +10,16 @@ use Illuminate\Database\Eloquent\Model;
 class Expediente extends Model
 {
     protected $fillable = [
+        'curaduria_id',
         'idradicacion',
-        'vigencia',
         'fecharad',
-        'fechacompleto',
-        'objeto',
+        'vigencia',
+        'objetolicencia_id',
         'parent_id',
-        'estado_id',
-        'fechacierre',
+        'fechacompleto',
         'nombre',
+        'fechacierre',
+        'estadoexpediente_id',
     ];
 
     public function curaduria(){
@@ -31,5 +32,15 @@ class Expediente extends Model
 
     public function estadoexpediente(){
         return $this->belongsTo(Estadoexpediente::class);
+    }
+
+    public function parent(){
+        return $this->belongsTo(Expediente::class);
+    }
+
+    public function pmr(){
+        //Esta es la relacion que me permitira ver todos los expedientes hijos que tenga
+        //pmr: Prorroga-Modificacion-Revalidacion
+        return $this->hasMany(Expediente::class, 'parent_id');
     }
 }

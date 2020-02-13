@@ -1,5 +1,6 @@
 <?php
 
+use App\Estadoexpediente;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,6 +16,8 @@ class CreateEstadoexpedientesTable extends Migration
     {
         Schema::create('estadoexpedientes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('estado')->default(Estadoexpediente::ESTADO_ACTIVO);
             $table->timestamps();
         });
     }
