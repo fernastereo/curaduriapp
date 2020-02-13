@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,10 @@ use Illuminate\Http\Request;
 */
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     //Middleware auth y guard api
 //     return $request->user();
 // });
 
 
-Route::resource('curadurias', 'Curaduria\CuraduriaController', ['except' => ['create', 'edit', 'destroy']]);
-Route::resource('expedientes', 'Expediente\ExpedienteController', ['only' => ['index', 'show']]);
+// Route::resource('curadurias', 'Curaduria\CuraduriaController', ['except' => ['create', 'edit', 'destroy']]);
+// Route::resource('expedientes', 'Expediente\ExpedienteController', ['only' => ['index', 'show']]);
