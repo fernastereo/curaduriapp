@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Ciudad;
 use Illuminate\Database\Eloquent\Model;
 
 class Departamento extends Model

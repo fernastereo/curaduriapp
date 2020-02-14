@@ -2,24 +2,23 @@
 
 namespace App;
 
-use App\Curaduria;
-use App\Objetolicencia;
-use App\Estadoexpediente;
 use Illuminate\Database\Eloquent\Model;
 
 class Expediente extends Model
 {
+    const EXPEDINTE_SIN_ESTADO = 0;
+
     protected $fillable = [
         'curaduria_id',
         'idradicacion',
         'fecharad',
-        'vigencia',
         'objetolicencia_id',
         'parent_id',
         'fechacompleto',
-        'nombre',
+        'nombreproyecto',
         'fechacierre',
         'estadoexpediente_id',
+        'tipoproyecto_id',
     ];
 
     public function curaduria(){
@@ -32,6 +31,10 @@ class Expediente extends Model
 
     public function estadoexpediente(){
         return $this->belongsTo(Estadoexpediente::class);
+    }
+
+    public function tipoproyecto(){
+        return $this->belongsTo(Tipoproyecto::class);
     }
 
     public function parent(){

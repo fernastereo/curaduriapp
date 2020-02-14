@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Expediente;
 use Illuminate\Database\Eloquent\Model;
 
 class Estadoexpediente extends Model

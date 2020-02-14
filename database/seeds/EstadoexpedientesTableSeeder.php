@@ -2,6 +2,7 @@
 
 use App\Estadoexpediente;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class EstadoexpedientesTableSeeder extends Seeder
 {
