@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Curaduria;
+use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,8 +12,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    const USUARIO_VERIFICADO = '1';
-    const USUARIO_NO_VERIFICADO = '0';
+    const USUARIO_VERIFICADO = 1;
+    const USUARIO_NO_VERIFICADO = 0;
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +21,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'verified', 'verification_token', 'curaduria_id'
+        'name', 
+        'email', 
+        'password', 
+        'verified', 
+        'verification_token', 
+        'curaduria_id'
     ];
 
     /**
@@ -29,7 +35,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'verification_token'
+        'password', 
+        'remember_token', 
+        'verification_token'
     ];
 
     /**
@@ -46,7 +54,8 @@ class User extends Authenticatable
     }
 
     public static function generarVerificationToken(){
-        return str_random(40);
+        //Estatico porque no necesitamos una instancia de User para ejecutar este metodo
+        return Str::random(40);
     }
 
     public function curaduria(){
