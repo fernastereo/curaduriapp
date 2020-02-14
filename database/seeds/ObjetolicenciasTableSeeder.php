@@ -2,6 +2,7 @@
 
 use App\Objetolicencia;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ObjetolicenciasTableSeeder extends Seeder
 {

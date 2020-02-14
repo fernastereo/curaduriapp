@@ -2,9 +2,6 @@
 
 namespace App;
 
-use App\User;
-use App\Ciudad;
-use App\Expediente;
 use Illuminate\Database\Eloquent\Model;
 
 class Curaduria extends Model

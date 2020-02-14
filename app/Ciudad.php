@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Curaduria;
-use App\Departamento;
 use Illuminate\Database\Eloquent\Model;
 
 class Ciudad extends Model
