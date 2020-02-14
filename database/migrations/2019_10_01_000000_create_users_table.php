@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('verified')->default(User::USUARIO_NO_VERIFICADO);
+            $table->integer('verified')->default(User::USUARIO_NO_VERIFICADO);
             $table->string('verification_token')->nullable();
             $table->unsignedBigInteger('curaduria_id');
             //$table->unsignedBigInteger('profile_id');
