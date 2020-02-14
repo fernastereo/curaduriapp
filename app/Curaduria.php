@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curaduria extends Model
 {
-    const CURADURIA_ACTIVA = 'ACTIVA';
-    const CURADURIA_INACTIVA = 'INACTIVA';
+    const CURADURIA_ACTIVA = 1;
+    const CURADURIA_INACTIVA = 0;
 
     protected $fillable = [
         'ciudad_id',

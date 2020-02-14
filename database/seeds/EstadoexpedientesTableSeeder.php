@@ -14,6 +14,7 @@ class EstadoexpedientesTableSeeder extends Seeder
     public function run()
     {
         DB::table('estadoexpedientes')->insert([
+            ['nombre' => 'SIN ESTADO', 'estado' => Estadoexpediente::ESTADO_ACTIVO],
             ['nombre' => 'RADICADO EN LEGAL Y DEBIDA FORMA', 'estado' => Estadoexpediente::ESTADO_ACTIVO],
             ['nombre' => 'RADICADO INCOMPLETO', 'estado' => Estadoexpediente::ESTADO_ACTIVO],
             ['nombre' => 'EN ESTUDIO TECNICO', 'estado' => Estadoexpediente::ESTADO_ACTIVO],

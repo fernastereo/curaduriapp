@@ -17,7 +17,7 @@ class CreateEstadoexpedientesTable extends Migration
         Schema::create('estadoexpedientes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->string('estado')->default(Estadoexpediente::ESTADO_ACTIVO);
+            $table->integer('estado')->default(Estadoexpediente::ESTADO_ACTIVO);
             $table->timestamps();
         });
     }
