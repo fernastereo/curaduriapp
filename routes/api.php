@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
-
+use Illuminate\Support\Facades\Route;
+// use Illuminate\Routing\Route;
+// use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,5 +21,40 @@ use Illuminate\Routing\Route;
 // });
 
 
-// Route::resource('curadurias', 'Curaduria\CuraduriaController', ['except' => ['create', 'edit', 'destroy']]);
-// Route::resource('expedientes', 'Expediente\ExpedienteController', ['only' => ['index', 'show']]);
+/* 
+Ciudades
+*/
+Route::resource('ciudads', 'Ciudad\CiudadController', ['only' => ['index', 'show']]);
+
+/* 
+Curadurias
+*/
+Route::resource('curadurias', 'Curaduria\CuraduriaController', ['except' => ['create', 'edit', 'destroy']]);
+
+/*
+Departamentos
+*/
+Route::resource('departamentos', 'Departamento\DepartamentoController', ['only' => ['index', 'show']]);
+
+/* 
+EstadoExpediente
+*/
+Route::resource('estadoexpedientes', 'Estadoexpediente\EstadoexpedienteController', ['only' => ['index', 'show']]);
+
+/* 
+Expedientes
+*/
+Route::resource('expedientes', 'Expediente\ExpedienteController', ['only' => ['index', 'show']]);
+
+/* 
+Objetolicencia
+*/
+Route::resource('objetolicencias', 'Objetolicencia\ObjetolicenciaController', ['only' => ['index', 'show']]);
+
+/* 
+Users
+*/
+Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
+
+
+
