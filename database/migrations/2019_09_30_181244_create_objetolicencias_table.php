@@ -17,7 +17,7 @@ class CreateObjetolicenciasTable extends Migration
         Schema::create('objetolicencias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-            $table->string('estado')->default(Objetolicencia::OBJETO_ACTIVO);
+            $table->integer('estado')->default(Objetolicencia::OBJETO_ACTIVO);
             $table->timestamps();
         });
     }

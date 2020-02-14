@@ -26,7 +26,7 @@ class CreateCuraduriasTable extends Migration
             $table->string('web')->nullable();
             $table->string('logo')->nullable();
             $table->dateTime('fechaini');
-            $table->string('estado')->default(Curaduria::CURADURIA_INACTIVA);
+            $table->integer('estado')->default(Curaduria::CURADURIA_INACTIVA);
             $table->timestamps();
 
             $table->foreign('ciudad_id')->references('id')->on('ciudads');
