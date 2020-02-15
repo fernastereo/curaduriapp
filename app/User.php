@@ -49,6 +49,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Mutador para que el campo nombre se guarde en minusculas
+    public function setNameAttribute($value){
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    //Accesor para que el campo nombre se muestre con mayuscula inicial a pesar de que se haya guardado todo en minusculas
+    public function getNameAttribute($value){
+        return ucwords($value);
+    }
+
     public function esUsuarioVerificado(){
         return $this->verified == User::USUARIO_VERIFICADO;
     }
