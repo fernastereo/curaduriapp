@@ -67,7 +67,36 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = User::findOrFail($id);
+
+        $rules = [
+            'email' => 'email|unique:users,email,' . $usuario->id,
+            'password' => 'min:6|confirmed',
+        ];
+
+        $this->validate($request, $rules);
+
+        if ($request->has('name')) {
+            $usuario->name = $request['name'];
+        }
+
+        if ($request->has('email') && $usuario->email != $request->email) {
+            $usuario->verified = User::USUARIO_NO_VERIFICADO;
+            $usuario->verification_token = User::generarVerificationToken();
+            $usuario->email = $request->email;
+        }
+
+        if ($request->has('password')) {
+            $usuario->password = bcrypt($request->password);
+        }
+
+        if (!$usuario->isDirty()) {
+            return response()->json(['data' => ' Se debe enviar informacion para actualizar', 'code' => 422], 422);
+        }
+
+        $usuario->save();
+
+        return response()->json(['data' => $usuario], 201);
     }
 
     /**
