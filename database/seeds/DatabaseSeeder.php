@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
 
         //Aqui llamar el factory de Curadurias, en este se crean curadurias y usuarios por cada una
         /*
-        Ejecuto el factory Curaduria, 10 veces con create y por cada uno de los registros creados 
+        Ejecuto el factory Curaduria 10 veces con create y por cada uno de los registros creados 
         mando una funcion anonima (callback) a la que le mando como parametro cada uno de los 
         registros curaduria ($curaduria) que se van creando (para esto es el each) y dentro de esa 
         funcion ejecuto el factory User, x veces con create y al create le mando en un array la 
