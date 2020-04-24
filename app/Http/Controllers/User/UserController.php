@@ -16,7 +16,6 @@ class UserController extends ApiController
     public function index()
     {
         $usuarios = User::all();
-
         return response()->json(['data' => $usuarios], 200);
     }
 
@@ -54,7 +53,6 @@ class UserController extends ApiController
     public function show($id)
     {
         $usuario = User::findOrFail($id);
-
         return response()->json(['data' => $usuario], 200);
     }
 
@@ -91,7 +89,7 @@ class UserController extends ApiController
         }
 
         if (!$usuario->isDirty()) {
-            return response()->json(['data' => ' Se debe enviar informacion para actualizar', 'code' => 422], 422);
+            return response()->json(['error' => ' Se debe especificar al menos un valor diferente para actualizar', 'code' => 422], 422);
         }
 
         $usuario->save();
