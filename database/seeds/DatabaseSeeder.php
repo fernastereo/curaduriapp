@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             ObjetolicenciasTableSeeder::class,
             TipoproyectoTableSeeder::class,
             CuraduriaTableSeeder::class,
+            LicenciasTableSeeder::class,
         ]);
 
 
