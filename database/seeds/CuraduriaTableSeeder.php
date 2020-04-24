@@ -22,8 +22,8 @@ class CuraduriaTableSeeder extends Seeder
         relacion entre las dos tablas asignandole al campo relacion la variable que envié como 
         parametro en el callback
         */
-        factory(Curaduria::class, 20)->create()->each(function($curaduria){
-            factory(User::class, mt_rand(1, 10))->create([
+        factory(Curaduria::class, 1)->create()->each(function($curaduria){
+            factory(User::class, mt_rand(1, 3))->create([
                 'curaduria_id' => $curaduria->id,
             ]);
         });
