@@ -55,5 +55,13 @@ Users
 */
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
 
+/* 
+Licencia
+*/
+Route::resource('licencias', 'Licencia\LicenciaController', ['only' => ['index', 'show', 'update']]);
+Route::resource('licencias.modalidads', 'Licencia\LicenciaModalidadController', ['only' => ['index']]);
 
-
+/* 
+Modalidad
+*/
+Route::resource('modalidads', 'Modalidad\ModalidadController', ['only' => ['index', 'show', 'update']]);
