@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Licencia;
 
 use App\Licencia;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class LicenciaModalidadController extends Controller
+class LicenciaModalidadController extends ApiController
 {
     /**
      * Display a listing of the resource.

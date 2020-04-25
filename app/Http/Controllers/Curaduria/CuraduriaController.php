@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Curaduria;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class CuraduriaController extends Controller
+class CuraduriaController extends ApiController
 {
     /**
      * Display a listing of the resource.

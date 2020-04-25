@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Ciudad;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class CiudadController extends Controller
+class CiudadController extends ApiController
 {
     /**
      * Display a listing of the resource.
