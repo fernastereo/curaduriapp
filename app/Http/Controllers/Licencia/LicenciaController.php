@@ -16,7 +16,7 @@ class LicenciaController extends ApiController
     public function index()
     {
         $licencias = Licencia::all();
-        return response()->json(['data' => $licencias], 200);
+        return $this->showAll($licencias);
     }
 
     /**
@@ -27,8 +27,8 @@ class LicenciaController extends ApiController
      */
     public function show($id)
     {
-        $licencias = Licencia::findOrFail($id);
-        return response()->json(['data' => $licencias], 200);
+        $licencia = Licencia::findOrFail($id);
+        return $this->showOne($licencia);
     }
 
     /**

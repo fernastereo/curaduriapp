@@ -11,7 +11,7 @@ trait ApiResponser{
   private function successResponse($data, $code){
     //Metodo encargado de construir respuestas satisfacotrias
     //recibe la informacion a retornar y el codigo de la respuesta
-    return response()->jason($data, $code);
+    return response()->json($data, $code);
   }
 
   protected function errorResponse($message, $code){

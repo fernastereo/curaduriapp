@@ -16,6 +16,6 @@ class LicenciaModalidadController extends ApiController
     public function index(Licencia $licencia)
     {
         $modalidads = $licencia->modalidads;
-        return response()->json(['data' => $modalidads], 200);
+        return $this->showAll($modalidads);
     }
 }

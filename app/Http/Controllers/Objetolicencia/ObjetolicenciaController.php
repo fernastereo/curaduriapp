@@ -16,7 +16,7 @@ class ObjetolicenciaController extends ApiController
     public function index()
     {
         $objetoLicencias = Objetolicencia::all();
-        return response()->json(['data' => $objetoLicencias], 200);
+        return $this->showAll($objetoLicencias);
     }
 
     /**
@@ -27,7 +27,7 @@ class ObjetolicenciaController extends ApiController
      */
     public function show($id)
     {
-        $objetoLicencias = Objetolicencia::findOrFail($id);
-        return response()->json(['data' => $objetoLicencias], 200);
+        $objetoLicencia = Objetolicencia::findOrFail($id);
+        return $this->showOne($objetoLicencia);
     }
 }
