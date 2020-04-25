@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Objetolicencia;
+namespace App\Http\Controllers\Modalidad;
 
-use App\Objetolicencia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 
-class ObjetolicenciaController extends ApiController
+class ModalidadController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class ObjetolicenciaController extends ApiController
      */
     public function index()
     {
-        $objetoLicencias = Objetolicencia::all();
-        return $this->showAll($objetoLicencias);
+        //
     }
 
     /**
@@ -27,7 +25,18 @@ class ObjetolicenciaController extends ApiController
      */
     public function show($id)
     {
-        $objetoLicencia = Objetolicencia::findOrFail($id);
-        return $this->showOne($objetoLicencia);
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
     }
 }

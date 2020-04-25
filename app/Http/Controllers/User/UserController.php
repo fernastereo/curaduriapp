@@ -16,7 +16,7 @@ class UserController extends ApiController
     public function index()
     {
         $usuarios = User::all();
-        return response()->json(['data' => $usuarios], 200);
+        return $this->showAll($usuarios);
     }
 
     /**
@@ -41,7 +41,7 @@ class UserController extends ApiController
         $campos['verification_token'] = User::generarVerificationToken();
 
         $usuario = User::create($campos);
-        return response()->json(['data' => $usuario], 201);
+        return $this->showOne($usuario, 201);
     }
 
     /**
@@ -53,7 +53,7 @@ class UserController extends ApiController
     public function show($id)
     {
         $usuario = User::findOrFail($id);
-        return response()->json(['data' => $usuario], 200);
+        return $this->showOne($usuario, 200);
     }
 
     /**
@@ -89,12 +89,12 @@ class UserController extends ApiController
         }
 
         if (!$usuario->isDirty()) {
-            return response()->json(['error' => ' Se debe especificar al menos un valor diferente para actualizar', 'code' => 422], 422);
+            return $this->errorResponse(' Se debe especificar al menos un valor diferente para actualizar', 422);
         }
 
         $usuario->save();
 
-        return response()->json(['data' => $usuario], 201);
+        return $this->showOne($usuario, 201);
     }
 
     /**
@@ -109,6 +109,6 @@ class UserController extends ApiController
 
         $usuario->delete();
 
-        return response()->json(['data' => $usuario], 200);
+        return $this->showOne($usuario, 200);
     }
 }

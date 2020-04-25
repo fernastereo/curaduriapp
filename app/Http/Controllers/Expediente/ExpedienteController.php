@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Expediente;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class ExpedienteController extends Controller
+class ExpedienteController extends ApiController
 {
     /**
      * Display a listing of the resource.
