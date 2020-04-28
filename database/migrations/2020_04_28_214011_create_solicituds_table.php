@@ -15,6 +15,7 @@ class CreateSolicitudsTable extends Migration
     {
         Schema::create('solicituds', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('curaduria_id');
             $table->unsignedBigInteger('objetolicencia_id');
             $table->string('licenciaanteriornumero')->nullable();
             $table->string('licenciaanteriorvigencia')->nullable();
@@ -24,6 +25,7 @@ class CreateSolicitudsTable extends Migration
             $table->integer('anexos')->default(0);
             $table->string('token')->nullable();
             $table->timestamps();
+            $table->foreign('curaduria_id')->references('id')->on('curadurias');
             $table->foreign('objetolicencia_id')->references('id')->on('objetolicencias');
             $table->foreign('modalidad_id')->references('id')->on('modalidads');
             $table->foreign('solicitante_id')->references('id')->on('solicitantes');

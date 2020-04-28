@@ -43,4 +43,8 @@ class Curaduria extends Model
     public function expedientes(){
         return $this->hasMany(Expediente::class);
     }
+
+    public function solicituds(){
+        return $this->hasMany(Solicitud::class);
+    }
 }

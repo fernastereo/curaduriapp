@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Curaduria;
 use App\Modalidad;
 use App\Solicitud;
 use App\Solicitante;
@@ -10,6 +11,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Solicitud::class, function (Faker $faker) {
     return [
+        'curaduria_id'              => Curaduria::all()->random()->id,
         'objetolicencia_id'         => Objetolicencia::all()->random()->id,
         'licenciaanteriornumero'    => '',
         'licenciaanteriorvigencia'  => '',

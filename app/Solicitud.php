@@ -21,6 +21,10 @@ class Solicitud extends Model
         return $this->token === null;
     }
 
+    public function curaduria(){
+        return $this->belongsTo(Curaduria::class);
+    }
+
     public function solicitante(){
         return $this->belongsTo(Solicitante::class);
     }
