@@ -96,7 +96,13 @@ class Handler extends ExceptionHandler
             
         }
 
-        return parent::render($request, $exception);
+        if (config('app.debug')) {
+            //Si estamos en modo depuracion:
+            return parent::render($request, $exception);
+        }
+
+        //Si llega acá es porque ya estamos en modo producción
+        return $this->errorResponse('Falla inesperada. Intente mas tarde', 500);
     }
 
     /**
