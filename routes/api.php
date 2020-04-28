@@ -34,6 +34,7 @@ Route::resource('curadurias', 'Curaduria\CuraduriaController', ['except' => ['cr
 Departamentos
 */
 Route::resource('departamentos', 'Departamento\DepartamentoController', ['only' => ['index', 'show']]);
+Route::resource('departamentos.ciudads', 'Departamento\DepartamentoCiudadController', ['only' => ['index']]);
 
 /* 
 EstadoExpediente
