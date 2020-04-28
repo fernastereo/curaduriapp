@@ -89,7 +89,7 @@ class UserController extends ApiController
         }
 
         if (!$usuario->isDirty()) {
-            return $this->errorResponse(' Se debe especificar al menos un valor diferente para actualizar', 422);
+            return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar', 422);
         }
 
         $usuario->save();
