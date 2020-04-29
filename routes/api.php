@@ -66,3 +66,9 @@ Route::resource('licencias.modalidads', 'Licencia\LicenciaModalidadController', 
 Modalidad
 */
 Route::resource('modalidads', 'Modalidad\ModalidadController', ['only' => ['index', 'show']]);
+
+/*
+Solicitud
+*/
+Route::resource('solicituds', 'Solicitud\SolicitudController', ['only' => ['index', 'show', 'store']]);
+Route::get('solicituds/{token}/verify', 'Solicitud\SolicitudController@verify')->name('solicituds.verify');
