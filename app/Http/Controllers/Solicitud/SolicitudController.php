@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Solicitud;
 
 use App\Solicitud;
+use App\Solicitante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiController;
 
@@ -38,7 +40,52 @@ class SolicitudController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'objetolicencia_id'         => 'required',
+            'licenciaanteriornumero'    => 'nullable|numeric|max:4',
+            'licenciaanteriorvigencia'  => 'nullable|numeric|max:4',
+            'modalidad_id'              => 'required|numeric',
+            'solidentificacion'         => 'required|numeric',
+            'solnombre'                 => 'required',
+            'soltelefono'               => 'required',
+            'solemail'                  => 'required|email',
+            'descripcion'               => 'nullable',
+            'anexos'                    => 'array,'
+        ];
+
+        $this->validate($request, $rules);
+
+        DB::beginTransaction();
+        try{
+            // $id = Solicitante::where('identificacion', $request->solidentificacion)->get();
+            
+            $id = Solicitante::insertGetId([
+                'identificacion' => $request->has('solidentificacion') ? $request->solidentificacion : null,
+                'nombre' => $request->has('solnombre') ? $request->solnombre : null,
+                'telefono' => $request->has('soltelefono') ? $request->soltelefono : null,
+                'email' => $request->has('solemail') ? $request->solemail : null,
+            ]);
+            
+            $solicitud = Solicitud::create([
+                'curaduria_id' => $request->has('curaduria_id') ? $request->curaduria_id : null,
+                'objetolicencia_id' => $request->has('objetolicencia_id') ? $request->objetolicencia_id : null,
+                'licenciaanteriornumero' => $request->has('licenciaanteriornumero') ? $request->licenciaanteriornumero : null,
+                'licenciaanteriorvigencia' => $request->has('licenciaanteriorvigencia') ? $request->licenciaanteriorvigencia : null,
+                'modalidad_id' => $request->has('modalidad_id') ? $request->modalidad_id : null,
+                'descripcion' => $request->has('descripcion') ? $request->descripcion : null,
+                'solicitante_id' => $id,
+                'token' => str_random(50)
+            ]);
+
+            DB::commit();
+        
+        }catch(\Exception $e){
+            DB::rollback();
+            return $this->errorResponse('warning,Something Went Wrong!' . $e->getMessage(), 500);
+        }   
+
+        return $this->showOne($solicitud, 201);
+
     }
 
     /**
@@ -49,6 +96,7 @@ class SolicitudController extends ApiController
      */
     public function show(Solicitud $solicitud)
     {
-        return $this->showOne($solicitud);
+        $data = $solicitud::where('id', $solicitud->id)->with('solicitante')->get();
+        return $this->showAll($data);
     }
 }
