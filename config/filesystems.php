@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'default' => env('FILESYSTEM_DRIVER', 'solicitud_files'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,6 +64,14 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'solicitud_files' => [
+            'driver' => 's3',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+            'url' => env('AWS_URL'),
+        ],
     ],
 
 ];
