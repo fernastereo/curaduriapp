@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Modalidad;
 
+use App\Modalidad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 
@@ -14,7 +15,8 @@ class ModalidadController extends ApiController
      */
     public function index()
     {
-        //
+        $modalidads = Modalidad::all();
+        return $this->showAll($modalidads);
     }
 
     /**
@@ -25,18 +27,7 @@ class ModalidadController extends ApiController
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        $modalidad = Modalidad::findOrFail($id);
+        return $this->showOne($modalidad);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Curaduria;
 
+use App\Curaduria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 
@@ -14,17 +15,8 @@ class CuraduriaController extends ApiController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $curadurias = Curaduria::all();
+        return $this->showAll($curadurias);
     }
 
     /**
@@ -46,18 +38,8 @@ class CuraduriaController extends ApiController
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $curaduria = Curaduria::findOrFail($id);
+        return $this->showOne($curaduria);
     }
 
     /**
@@ -68,17 +50,6 @@ class CuraduriaController extends ApiController
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
     {
         //
     }

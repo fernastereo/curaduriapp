@@ -15,6 +15,10 @@ class Modalidad extends Model
         return $this->belongsTo(Licencia::class);
     }
 
+    public function solicituds(){
+        return $this->hasMany(Solicitud::class);
+    }
+
     public function estaActivo(){
         return $this->estado == Modalidad::MODALIDAD_ACTIVO;
     }

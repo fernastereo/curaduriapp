@@ -14,6 +14,10 @@ class Objetolicencia extends Model
         'estado'
     ];
 
+    public function solicituds(){
+        return $this->hasMany(Solicitud::class);
+    }
+    
     public function expedientes(){
         return $this->hasMany(Expediente::class);
     }

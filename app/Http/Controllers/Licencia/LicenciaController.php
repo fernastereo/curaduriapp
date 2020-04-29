@@ -30,16 +30,4 @@ class LicenciaController extends ApiController
         $licencia = Licencia::findOrFail($id);
         return $this->showOne($licencia);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 }

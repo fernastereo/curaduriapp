@@ -25,6 +25,8 @@ class CreateCuraduriasTable extends Migration
             $table->string('email');
             $table->string('web')->nullable();
             $table->string('logo')->nullable();
+            $table->string('emailsolicitudes');
+            $table->string('responsesolicitudes');
             $table->dateTime('fechaini');
             $table->integer('estado')->default(Curaduria::CURADURIA_INACTIVA);
             $table->timestamps();

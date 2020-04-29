@@ -34,6 +34,7 @@ Route::resource('curadurias', 'Curaduria\CuraduriaController', ['except' => ['cr
 Departamentos
 */
 Route::resource('departamentos', 'Departamento\DepartamentoController', ['only' => ['index', 'show']]);
+Route::resource('departamentos.ciudads', 'Departamento\DepartamentoCiudadController', ['only' => ['index']]);
 
 /* 
 EstadoExpediente
@@ -58,10 +59,16 @@ Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]
 /* 
 Licencia
 */
-Route::resource('licencias', 'Licencia\LicenciaController', ['only' => ['index', 'show', 'update']]);
+Route::resource('licencias', 'Licencia\LicenciaController', ['only' => ['index', 'show']]);
 Route::resource('licencias.modalidads', 'Licencia\LicenciaModalidadController', ['only' => ['index']]);
 
 /* 
 Modalidad
 */
-Route::resource('modalidads', 'Modalidad\ModalidadController', ['only' => ['index', 'show', 'update']]);
+Route::resource('modalidads', 'Modalidad\ModalidadController', ['only' => ['index', 'show']]);
+
+/*
+Solicitud
+*/
+Route::resource('solicituds', 'Solicitud\SolicitudController', ['only' => ['index', 'show', 'store']]);
+Route::get('solicituds/{token}/verify', 'Solicitud\SolicitudController@verify')->name('solicituds.verify');

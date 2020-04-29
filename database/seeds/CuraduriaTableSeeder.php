@@ -3,6 +3,7 @@
 use App\User;
 use App\Curaduria;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CuraduriaTableSeeder extends Seeder
 {
@@ -22,10 +23,124 @@ class CuraduriaTableSeeder extends Seeder
         relacion entre las dos tablas asignandole al campo relacion la variable que envié como 
         parametro en el callback
         */
-        factory(Curaduria::class, 1)->create()->each(function($curaduria){
-            factory(User::class, mt_rand(1, 3))->create([
-                'curaduria_id' => $curaduria->id,
+        // factory(Curaduria::class, 8)->create()->each(function($curaduria){
+        //     factory(User::class, mt_rand(1, 3))->create([
+        //         'curaduria_id' => $curaduria->id,
+        //     ]);
+        // });
+
+        //Crear cada una de las curadurias
+        DB::table('curadurias')->insert([
+            'ciudad_id' => 126,
+            'numero' => '1',
+            'curador' => 'JAIME FONTANILLA MARTINEZ',
+            'idcurador' => '12345678',
+            'direccion' => 'CRA 58 N° 64-100',
+            'telefono' => '12345678',
+            'email' => 'info@curaduria1bq.com',
+            'web' => 'www.curaduria1bq.com',
+            'logo' => '',
+            'fechaini' => '2020-04-28',
+            'estado' => Curaduria::CURADURIA_ACTIVA,
+            'emailsolicitudes' => 'fernandoecueto@gmail.com',
+            'responsesolicitudes' => 'solicitudrecibida.html'
             ]);
-        });
+
+        DB::table('curadurias')->insert([
+            'ciudad_id' => 126,
+            'numero' => '2',
+            'curador' => 'MARTHA HELENA HERRERA CEBALLO',
+            'idcurador' => '12345678',
+            'direccion' => 'CRA 59 N° 74-12',
+            'telefono' => '12345678',
+            'email' => 'info@curaduria2barranquilla.com',
+            'web' => 'www.curaduria2barranquilla.com',
+            'logo' => '',
+            'fechaini' => '2020-04-28',
+            'estado' => Curaduria::CURADURIA_ACTIVA,
+            'emailsolicitudes' => 'fernandoecueto@gmail.com',
+            'responsesolicitudes' => 'solicitudrecibida.html'
+        ]);
+
+        DB::table('curadurias')->insert([
+            'ciudad_id' => 150,
+            'numero' => '1',
+            'curador' => 'RONALD LLAMAS BUSTOS',
+            'idcurador' => '12345678',
+            'direccion' => 'Centro Histórico',
+            'telefono' => '12345678',
+            'email' => 'informacion@curaduria1cartagena.com',
+            'web' => 'www.curaduria1cartagena.com',
+            'logo' => '',
+            'fechaini' => '2020-04-28',
+            'estado' => Curaduria::CURADURIA_ACTIVA,
+            'emailsolicitudes' => 'fernandoecueto@gmail.com',
+            'responsesolicitudes' => 'solicitudrecibida.html'
+        ]);
+
+        DB::table('curadurias')->insert([
+            'ciudad_id' => 150,
+            'numero' => '2',
+            'curador' => 'GUILLERMO MENDOZA JIMENEZ',
+            'idcurador' => '12345678',
+            'direccion' => 'Centro Calle del Candilejo',
+            'telefono' => '12345678',
+            'email' => 'info@curaduria2cartagena.com',
+            'web' => 'www.curaduria2cartagena.com',
+            'logo' => '',
+            'fechaini' => '2020-04-28',
+            'estado' => Curaduria::CURADURIA_ACTIVA,
+            'emailsolicitudes' => 'fernandoecueto@gmail.com',
+            'responsesolicitudes' => 'solicitudrecibida.html'
+        ]);
+
+        DB::table('curadurias')->insert([
+            'ciudad_id' => 654,
+            'numero' => '1',
+            'curador' => 'JORGE TAMAYO CALLEJAS',
+            'idcurador' => '12345678',
+            'direccion' => 'Cra 18 N° 22 -73',
+            'telefono' => '12345678',
+            'email' => 'curaduriaurbana1sm@gmail.com',
+            'web' => 'www.curaduria1santamarta.co',
+            'logo' => '',
+            'fechaini' => '2020-04-28',
+            'estado' => Curaduria::CURADURIA_ACTIVA,
+            'emailsolicitudes' => 'fernandoecueto@gmail.com',
+            'responsesolicitudes' => 'solicitudrecibida.html'
+        ]);
+
+        DB::table('curadurias')->insert([
+            'ciudad_id' => 402,
+            'numero' => '2',
+            'curador' => 'ARYANNA ZULETA OÑATE',
+            'idcurador' => '12345678',
+            'direccion' => 'Calle 16 N° 6 - 34',
+            'telefono' => '12345678',
+            'email' => 'curadurianumero2@hotmail.es',
+            'web' => 'www.curaduria2valledupar.co',
+            'logo' => '',
+            'fechaini' => '2020-04-28',
+            'estado' => Curaduria::CURADURIA_ACTIVA,
+            'emailsolicitudes' => 'fernandoecueto@gmail.com',
+            'responsesolicitudes' => 'solicitudrecibida.html'
+        ]);
+
+        DB::table('curadurias')->insert([
+            'ciudad_id' => 145,
+            'numero' => '1',
+            'curador' => 'ROSARIO ROJAS',
+            'idcurador' => '12345678',
+            'direccion' => 'Calle 16 N° 18 - 17',
+            'telefono' => '12345678',
+            'email' => 'info@curaduria2soledad.com',
+            'web' => 'www.curaduria2soledad.com',
+            'logo' => '',
+            'fechaini' => '2020-04-28',
+            'estado' => Curaduria::CURADURIA_ACTIVA,
+            'emailsolicitudes' => 'fernandoecueto@gmail.com',
+            'responsesolicitudes' => 'solicitudrecibida.html'
+        ]);
+
     }
 }
