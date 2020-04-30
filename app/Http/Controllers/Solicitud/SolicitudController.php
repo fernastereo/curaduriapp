@@ -59,7 +59,7 @@ class SolicitudController extends ApiController
         try{
             // $id = Solicitante::where('identificacion', $request->solidentificacion)->get();
             
-            $id = Solicitante::insertGetId([
+            $solicitante = Solicitante::create([
                 'identificacion' => $request->has('solidentificacion') ? $request->solidentificacion : null,
                 'nombre' => $request->has('solnombre') ? $request->solnombre : null,
                 'telefono' => $request->has('soltelefono') ? $request->soltelefono : null,
@@ -73,7 +73,7 @@ class SolicitudController extends ApiController
                 'licenciaanteriorvigencia' => $request->has('licenciaanteriorvigencia') ? $request->licenciaanteriorvigencia : null,
                 'modalidad_id' => $request->has('modalidad_id') ? $request->modalidad_id : null,
                 'descripcion' => $request->has('descripcion') ? $request->descripcion : null,
-                'solicitante_id' => $id,
+                'solicitante_id' => $solicitante->id,
                 'token' => str_random(50)
             ]);
 
@@ -96,7 +96,7 @@ class SolicitudController extends ApiController
      */
     public function show(Solicitud $solicitud)
     {
-        $data = $solicitud::where('id', $solicitud->id)->with('solicitante')->get();
+        $data = $solicitud::where('id', $solicitud->id)->with('solicitante')->with('anexosolicituds')->get();
         return $this->showAll($data);
     }
 }

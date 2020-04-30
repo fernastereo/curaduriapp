@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AnexoSolicitud extends Model
+class Anexosolicitud extends Model
 {
     protected $fillable = ['file', 'solicitud_id'];
 

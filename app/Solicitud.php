@@ -39,6 +39,6 @@ class Solicitud extends Model
     }
 
     public function anexosolicituds(){
-        return $this->hasMany(AnexoSolicitud::class);
+        return $this->hasMany(Anexosolicitud::class);
     }
 }

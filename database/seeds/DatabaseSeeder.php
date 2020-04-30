@@ -3,13 +3,14 @@
 use App\User;
 use App\Ciudad;
 use App\Curaduria;
+use App\Solicitud;
 use App\Expediente;
+use App\Solicitante;
 use App\Departamento;
 use App\Tipoproyecto;
+use App\Anexosolicitud;
 use App\Objetolicencia;
 use App\Estadoexpediente;
-use App\Solicitante;
-use App\Solicitud;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
         Tipoproyecto::truncate();
         Solicitante::truncate();
         Solicitud::truncate();
+        Anexosolicitud::truncate();
         //DB::table('tabla')->truncate(); //Para tablas pivote que no tienen modelo asociado (muchos-muchos)
 
         $this->call([
@@ -46,7 +48,8 @@ class DatabaseSeeder extends Seeder
             CuraduriaTableSeeder::class,
             LicenciasTableSeeder::class,
             SolicitanteTableSeeder::class,
-            SolicitudTableSeeder::class
+            SolicitudTableSeeder::class,
+            AnexosolicitudTableSeeder::class
         ]);
     }
 }
