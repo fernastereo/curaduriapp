@@ -38,7 +38,7 @@ class Solicitud extends Model
         return $this->belongsTo(Objetolicencia::class);
     }
 
-    public function anexosolicituds(){
-        return $this->hasMany(Anexosolicitud::class);
+    public function solicitudanexos(){
+        return $this->hasMany(Solicitudanexo::class);
     }
 }

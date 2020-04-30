@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAnexosolicitudsTable extends Migration
+class CreateSolicitudanexosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAnexosolicitudsTable extends Migration
      */
     public function up()
     {
-        Schema::create('anexosolicituds', function (Blueprint $table) {
+        Schema::create('solicitudanexos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('file')->nullable();
             $table->unsignedBigInteger('solicitud_id');
@@ -29,6 +29,6 @@ class CreateAnexosolicitudsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anexosolicituds');
+        Schema::dropIfExists('solicitudanexos');
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-use App\Anexosolicitud;
+use App\Solicitudanexo;
 use Illuminate\Database\Seeder;
 
-class AnexosolicitudTableSeeder extends Seeder
+class SolicitudanexoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class AnexosolicitudTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Anexosolicitud::class, 15)->create();
+        factory(Solicitudanexo::class, 15)->create();
     }
 }
