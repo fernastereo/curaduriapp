@@ -43,7 +43,8 @@ class CuraduriaTableSeeder extends Seeder
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
-            'responsesolicitudes' => 'solicitudrecibida.html'
+            'responsesolicitudes' => 'solicitudrecibida.html',
+            'bucket' => '1bq'
             ]);
 
         DB::table('curadurias')->insert([
@@ -59,7 +60,8 @@ class CuraduriaTableSeeder extends Seeder
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
-            'responsesolicitudes' => 'solicitudrecibida.html'
+            'responsesolicitudes' => 'solicitudrecibida.html',
+            'bucket' => '2bq'
         ]);
 
         DB::table('curadurias')->insert([
@@ -75,7 +77,8 @@ class CuraduriaTableSeeder extends Seeder
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
-            'responsesolicitudes' => 'solicitudrecibida.html'
+            'responsesolicitudes' => 'solicitudrecibida.html',
+            'bucket' => '1ca'
         ]);
 
         DB::table('curadurias')->insert([
@@ -91,7 +94,8 @@ class CuraduriaTableSeeder extends Seeder
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
-            'responsesolicitudes' => 'solicitudrecibida.html'
+            'responsesolicitudes' => 'solicitudrecibida.html',
+            'bucket' => '2ca'
         ]);
 
         DB::table('curadurias')->insert([
@@ -107,7 +111,8 @@ class CuraduriaTableSeeder extends Seeder
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
-            'responsesolicitudes' => 'solicitudrecibida.html'
+            'responsesolicitudes' => 'solicitudrecibida.html',
+            'bucket' => '1sm'
         ]);
 
         DB::table('curadurias')->insert([
@@ -123,7 +128,8 @@ class CuraduriaTableSeeder extends Seeder
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
-            'responsesolicitudes' => 'solicitudrecibida.html'
+            'responsesolicitudes' => 'solicitudrecibida.html',
+            'bucket' => '2va'
         ]);
 
         DB::table('curadurias')->insert([
@@ -139,7 +145,8 @@ class CuraduriaTableSeeder extends Seeder
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
-            'responsesolicitudes' => 'solicitudrecibida.html'
+            'responsesolicitudes' => 'solicitudrecibida.html',
+            'bucket' => '1so'
         ]);
 
     }
