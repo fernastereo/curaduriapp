@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Solicitud;
 
 use App\Solicitud;
 use App\Solicitante;
+use App\Solicitudanexo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Storage;
 
 class SolicitudController extends ApiController
 {
@@ -40,6 +42,8 @@ class SolicitudController extends ApiController
      */
     public function store(Request $request)
     {
+        // return $request->file('anexos');
+        
         $rules = [
             'objetolicencia_id'         => 'required',
             'licenciaanteriornumero'    => 'nullable|numeric|max:4',
@@ -50,7 +54,7 @@ class SolicitudController extends ApiController
             'soltelefono'               => 'required',
             'solemail'                  => 'required|email',
             'descripcion'               => 'nullable',
-            'anexos'                    => 'array,'
+            // 'anexos'                    => 'array'
         ];
 
         $this->validate($request, $rules);
@@ -77,6 +81,27 @@ class SolicitudController extends ApiController
                 'token' => str_random(50)
             ]);
 
+            $anexos = $request->has('anexos') ? $request->file('anexos') : null;
+            
+            foreach ($anexos as $anexo) {
+                /*Para enviar a S3: 
+                Crear usuario en AWS y asignarles las policies hacia el bucket (copiar de otro)
+                instalar esto: composer require league/flysystem-aws-s3-v3
+                En config/filesystem declarar el bucket
+                En .env colocar las credenciales
+                */
+                $storagePath = Storage::disk('solicitudfiles')->put($solicitud->curaduria->bucket, $anexo, 'public');
+                //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
+                $url = Storage::url($storagePath);
+                //Guardo la ruta obtenida en el paso anterior en la BD para poder referenciarla
+                $document = new Solicitudanexo();
+                $document->file = $url;
+                $document->solicitud_id = $solicitud->id;
+                $document->save();
+
+                //$document->filename = $url;
+            }
+
             DB::commit();
         
         }catch(\Exception $e){
@@ -96,7 +121,7 @@ class SolicitudController extends ApiController
      */
     public function show(Solicitud $solicitud)
     {
-        $data = $solicitud::where('id', $solicitud->id)->with('solicitante')->with('anexosolicituds')->get();
+        $data = $solicitud::where('id', $solicitud->id)->with('solicitante')->with('solicitudanexos')->get();
         return $this->showAll($data);
     }
 }
