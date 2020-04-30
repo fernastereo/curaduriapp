@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSolicitantesTable extends Migration
+class CreateAnexosolicitudsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateSolicitantesTable extends Migration
      */
     public function up()
     {
-        Schema::create('solicitantes', function (Blueprint $table) {
+        Schema::create('anexosolicituds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('identificacion');
-            $table->string('dv', 1)->default('0');
-            $table->string('nombre');
-            $table->string('telefono');
-            $table->string('email');
+            $table->string('file')->nullable();
+            $table->unsignedBigInteger('solicitud_id');
             $table->timestamps();
+            $table->foreign('solicitud_id')->references('id')->on('solicituds');
         });
     }
 
@@ -31,6 +29,6 @@ class CreateSolicitantesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitantes');
+        Schema::dropIfExists('anexosolicituds');
     }
 }

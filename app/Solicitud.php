@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Solicitud extends Model
 {
     protected $fillable = [
+        'curaduria_id',
         'objetolicencia_id',
         'licenciaanteriornumero',
         'licenciaanteriorvigencia',
@@ -35,5 +36,9 @@ class Solicitud extends Model
 
     public function objetolicencia(){
         return $this->belongsTo(Objetolicencia::class);
+    }
+
+    public function anexosolicituds(){
+        return $this->hasMany(Anexosolicitud::class);
     }
 }

@@ -29,6 +29,7 @@ class CreateCuraduriasTable extends Migration
             $table->string('responsesolicitudes');
             $table->dateTime('fechaini');
             $table->integer('estado')->default(Curaduria::CURADURIA_INACTIVA);
+            $table->string('bucket')->nullable();
             $table->timestamps();
 
             $table->foreign('ciudad_id')->references('id')->on('ciudads');

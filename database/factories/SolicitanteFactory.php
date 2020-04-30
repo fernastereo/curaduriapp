@@ -9,7 +9,7 @@ $factory->define(Solicitante::class, function (Faker $faker) {
     return [
         'identificacion'=> $faker->randomNumber(8, false),
         'dv'            => $faker->numberBetween(1, 9),
-        'name'          => $faker->name,
+        'nombre'        => $faker->name,
         'telefono'      => $faker->phoneNumber,
         'email'         => $faker->freeEmail,
     ];
