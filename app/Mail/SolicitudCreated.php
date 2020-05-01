@@ -30,6 +30,6 @@ class SolicitudCreated extends Mailable
      */
     public function build()
     {
-        return $this->text('emails.welcome');
+        return $this->view('emails.welcome')->subject('Confirme su solicitud');
     }
 }
