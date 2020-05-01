@@ -31,7 +31,11 @@ class SolicitudController extends ApiController
      */
     public function verify($token)
     {
-        return $this->errorResponse("Token recibido: {$token}. Metodo Verify del controlador", 422);
+        $solicitud = Solicitud::where('token', $token)->firstOrFail();
+        $solicitud->token = null;
+        $solicitud->save();
+
+        return $this->showMessage('La solicitud ha sido verificada');
     }
 
     /**
@@ -98,8 +102,6 @@ class SolicitudController extends ApiController
                 $document->file = $url;
                 $document->solicitud_id = $solicitud->id;
                 $document->save();
-
-                //$document->filename = $url;
             }
 
             DB::commit();

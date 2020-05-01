@@ -28,4 +28,9 @@ trait ApiResponser{
     //Muestra respuesta para una unica instancia
     return $this->successResponse(['data' => $instance], $code);
   }
+
+  protected function showMessage($message, $code = 200){
+    //Muestra respuesta para una unica instancia
+    return $this->successResponse(['data' => $message], $code);
+  }
 }
