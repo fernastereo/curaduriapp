@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +15,10 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('mailable', function () {
+    $solicitud = App\Solicitud::find(50);
+
+    return new App\Mail\SolicitudCreated($solicitud);
 });

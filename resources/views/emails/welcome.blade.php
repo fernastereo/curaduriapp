@@ -1,3 +1,4 @@
-Hola {{ $solicitud->solicitante->nombre }}
+<p style="font-color: red;">
+Hola {{ $solicitud->solicitante->nombre }}</p>
 Virficala en el siguiente link:
-{{ route('solicituds.verify', $solcitud->token) }}
+{{ route('solicituds.verify', $solicitud->token) }}
