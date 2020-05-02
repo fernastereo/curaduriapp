@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\SolicitudSaved;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('mailable', function () {
-    $solicitud = App\Solicitud::find(50);
+    $solicitud = App\Solicitud::find(51);
 
-    return new App\Mail\SolicitudCreated($solicitud);
+    return new App\Mail\SolicitudSaved($solicitud);
 });

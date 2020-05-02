@@ -105,8 +105,6 @@ class SolicitudController extends ApiController
             }
 
             DB::commit();
-            // $solicitud->sendVerificationEmail();
-
         }catch(\Exception $e){
             DB::rollback();
             return $this->errorResponse('warning,Something Went Wrong!' . $e->getMessage(), 500);
