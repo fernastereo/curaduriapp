@@ -6,8 +6,10 @@ use App\Solicitud;
 use App\Solicitante;
 use App\Solicitudanexo;
 use Illuminate\Http\Request;
+use App\Mail\SolicitudVerified;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,7 +37,13 @@ class SolicitudController extends ApiController
         $solicitud->token = null;
         $solicitud->save();
 
+        Mail::to($solicitud->solicitante->email)->send(New SolicitudVerified($solicitud));
+
         return $this->showMessage('La solicitud ha sido verificada');
+        /*Aqui debe enviar dos mails
+        Uno para la curaduria con la informacion de la solicitud
+        Otro para el solicitante confirmando que fue recibida.
+        */
     }
 
     /**
@@ -103,8 +111,8 @@ class SolicitudController extends ApiController
                 $document->solicitud_id = $solicitud->id;
                 $document->save();
             }
-
             DB::commit();
+
         }catch(\Exception $e){
             DB::rollback();
             return $this->errorResponse('warning,Something Went Wrong!' . $e->getMessage(), 500);

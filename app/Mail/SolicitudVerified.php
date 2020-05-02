@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SolicitudCreated extends Mailable
+class SolicitudVerified extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,6 @@ class SolicitudCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcome')->subject('Confirme su solicitud');
+        return $this->markdown('emails.solicitud.verified')->subject('Su solicitud ha sido confirmada');
     }
 }
