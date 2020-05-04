@@ -1,9 +1,8 @@
 @component('mail::message', ['curaduria' => $solicitud->curaduria->numero])
-Su solicitud ha sido recibida!
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+Hola {{ $solicitud->solicitante->nombre }}. Su solicitud ha sido recibida!
 
-Thanks,<br>
-{{ config('app.name') }}
+Nuestro equipo de profesionales pronto se pondrá en contacto con usted para indicarle los pasos a seguir dentro de si proceso de solicitud de licencia.
+
+Muchas Gracias.<br>
+Curaduría Urbana N° {{ $solicitud->curaduria->numero }}
 @endcomponent
