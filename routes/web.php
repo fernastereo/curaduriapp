@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('mailable', function () {
-    $solicitud = App\Solicitud::find(76);
+    $solicitud = App\Solicitud::find(7);
 
-    return new App\Mail\SolicitudVerified($solicitud);
+    return new App\Mail\SolicitudResponse($solicitud);
 });

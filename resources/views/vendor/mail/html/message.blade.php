@@ -2,8 +2,11 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            {{-- <img src="{{ $imagen }}" alt="" srcset=""> --}}
-            Curaduría Urbana N° {{ $curaduria }}
+        @if ($imagen)
+            <img src="{{ Storage::disk('public')->url($imagen) }}" alt="Curaduría Urbana N° {{ $curaduria }}" srcset="">
+        @else
+            <h1 style="text-align: center;">CuraduriAPP®</h1>
+        @endif
         @endcomponent
     @endslot
 
