@@ -19,4 +19,8 @@ class Ciudad extends Model
     public function departamento(){
         return $this->belongsTo(Departamento::class);
     }
+
+    public function getNombreAttribute($valor){
+        return ucfirst(strtolower($valor));
+    }
 }

@@ -36,8 +36,8 @@ class SolicitudController extends ApiController
     public function verify($token)
     {
         $solicitud = Solicitud::where('token', $token)->firstOrFail();
-        $solicitud->token = null;
-        $solicitud->save();
+        // $solicitud->token = null;
+        // $solicitud->save();
 
         /*Aqui debe enviar dos mails
         Uno para la curaduria con la informacion de la solicitud

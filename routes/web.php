@@ -20,7 +20,11 @@ Route::get('/', function () {
 });
 
 Route::get('mailable', function () {
-    $solicitud = App\Solicitud::find(76);
+    $solicitud = App\Solicitud::find(7);
+    return new App\Mail\SolicitudResponse($solicitud);
+});
 
-    return new App\Mail\SolicitudVerified($solicitud);
+Route::get('confirmed', function(){
+    $solicitud = App\Solicitud::find(7);
+    return view('solicitud.confirmed', ['solicitud' => $solicitud]);
 });

@@ -32,6 +32,23 @@ class CuraduriaTableSeeder extends Seeder
         //Crear cada una de las curadurias
         DB::table('curadurias')->insert([
             'ciudad_id' => 126,
+            'numero' => '0',
+            'curador' => 'FERNANDO E. CUETO RIVERA',
+            'idcurador' => '12345678',
+            'direccion' => 'CRA 49C N° 75 - 47',
+            'telefono' => '12345678',
+            'email' => 'hey@fernandocueto.com',
+            'web' => 'www.fernandocueto.com',
+            'logo' => 'css.jpg',
+            'fechaini' => '2020-04-28',
+            'estado' => Curaduria::CURADURIA_ACTIVA,
+            'emailsolicitudes' => 'hey@fernandocueto.com',
+            'responsesolicitudes' => 'solicitudrecibida.html',
+            'bucket' => '1bq'
+            ]);
+            
+        DB::table('curadurias')->insert([
+            'ciudad_id' => 126,
             'numero' => '1',
             'curador' => 'JAIME FONTANILLA MARTINEZ',
             'idcurador' => '12345678',
@@ -39,7 +56,7 @@ class CuraduriaTableSeeder extends Seeder
             'telefono' => '12345678',
             'email' => 'info@curaduria1bq.com',
             'web' => 'www.curaduria1bq.com',
-            'logo' => '',
+            'logo' => '1bq.jpg',
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
@@ -56,7 +73,7 @@ class CuraduriaTableSeeder extends Seeder
             'telefono' => '12345678',
             'email' => 'info@curaduria2barranquilla.com',
             'web' => 'www.curaduria2barranquilla.com',
-            'logo' => '',
+            'logo' => '2bq.jpg',
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
@@ -73,7 +90,7 @@ class CuraduriaTableSeeder extends Seeder
             'telefono' => '12345678',
             'email' => 'informacion@curaduria1cartagena.com',
             'web' => 'www.curaduria1cartagena.com',
-            'logo' => '',
+            'logo' => '1ca.jpg',
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
@@ -90,7 +107,7 @@ class CuraduriaTableSeeder extends Seeder
             'telefono' => '12345678',
             'email' => 'info@curaduria2cartagena.com',
             'web' => 'www.curaduria2cartagena.com',
-            'logo' => '',
+            'logo' => '2ca.jpg',
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
@@ -107,7 +124,7 @@ class CuraduriaTableSeeder extends Seeder
             'telefono' => '12345678',
             'email' => 'curaduriaurbana1sm@gmail.com',
             'web' => 'www.curaduria1santamarta.co',
-            'logo' => '',
+            'logo' => '1sm.jpg',
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
@@ -124,7 +141,7 @@ class CuraduriaTableSeeder extends Seeder
             'telefono' => '12345678',
             'email' => 'curadurianumero2@hotmail.es',
             'web' => 'www.curaduria2valledupar.co',
-            'logo' => '',
+            'logo' => '2va.jpg',
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
@@ -141,13 +158,12 @@ class CuraduriaTableSeeder extends Seeder
             'telefono' => '12345678',
             'email' => 'info@curaduria2soledad.com',
             'web' => 'www.curaduria2soledad.com',
-            'logo' => '',
+            'logo' => '1so.jpg',
             'fechaini' => '2020-04-28',
             'estado' => Curaduria::CURADURIA_ACTIVA,
             'emailsolicitudes' => 'fernandoecueto@gmail.com',
             'responsesolicitudes' => 'solicitudrecibida.html',
             'bucket' => '1so'
         ]);
-
     }
 }
