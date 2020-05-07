@@ -46,7 +46,7 @@ class SolicitudController extends ApiController
         Mail::to($solicitud->curaduria->emailsolicitudes)->send(New SolicitudVerified($solicitud));
         Mail::to($solicitud->solicitante->email)->send(New SolicitudResponse($solicitud));
 
-        return $this->showMessage('La solicitud ha sido verificada');
+        return view('solicitud.confirmed');
     }
 
     /**
