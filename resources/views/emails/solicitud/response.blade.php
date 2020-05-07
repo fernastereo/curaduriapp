@@ -1,15 +1,8 @@
 @component('mail::message', ['curaduria' => $solicitud->curaduria->numero])
-Hola {{ $solicitud->solicitante->nombre }}. Se ha recibido una nueva solicitud!
+Hola {{ $solicitud->solicitante->nombre }}. Su solicitud ha sido recibida!
 
 Nuestro equipo de profesionales pronto se pondrá en contacto con usted para indicarle los pasos a seguir dentro de si proceso de solicitud de licencia.
-@component('mail::table')
-| Anexo         | Table         | Example  |
-| ------------- |:-------------:| --------:|
-@foreach ($solicitud->solicitudanexos as $anexo)
-| {{ $anexo->file }} | Centered      | $10      |
-@endforeach
 
-@endcomponent
 Muchas Gracias.<br>
 Curaduría Urbana N° {{ $solicitud->curaduria->numero }}
 @endcomponent

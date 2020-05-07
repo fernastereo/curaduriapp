@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Solicitud;
 use App\Solicitud;
 use App\Solicitante;
 use App\Solicitudanexo;
+use App\Mail\SolicitudSaved;
 use Illuminate\Http\Request;
+use App\Mail\SolicitudResponse;
 use App\Mail\SolicitudVerified;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -41,7 +43,8 @@ class SolicitudController extends ApiController
         Uno para la curaduria con la informacion de la solicitud
         Otro para el solicitante confirmando que fue recibida.
         */
-        Mail::to($solicitud->solicitante->email)->send(New SolicitudVerified($solicitud));
+        Mail::to($solicitud->curaduria->emailsolicitudes)->send(New SolicitudVerified($solicitud));
+        Mail::to($solicitud->solicitante->email)->send(New SolicitudResponse($solicitud));
 
         return $this->showMessage('La solicitud ha sido verificada');
     }
@@ -112,7 +115,8 @@ class SolicitudController extends ApiController
                 $document->save();
             }
             DB::commit();
-
+            Mail::to($solicitud->solicitante->email)->send(New SolicitudSaved($solicitud));
+            
         }catch(\Exception $e){
             DB::rollback();
             return $this->errorResponse('warning,Something Went Wrong!' . $e->getMessage(), 500);
