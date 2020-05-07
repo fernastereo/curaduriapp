@@ -29,8 +29,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        Solicitud::created(function($solicitud){
-            Mail::to($solicitud->solicitante->email)->send(New SolicitudSaved($solicitud));
-        });
+        // Solicitud::created(function($solicitud){
+        //     Mail::to($solicitud->solicitante->email)->send(New SolicitudSaved($solicitud));
+        // });
     }
 }
