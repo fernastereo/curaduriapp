@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Curaduria;
 use App\Curaduria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Storage;
 
 class CuraduriaController extends ApiController
 {
@@ -49,8 +50,45 @@ class CuraduriaController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Curaduria $curaduria)
     {
-        //
+        $rules = [
+            'ciudad_id'             => 'integer|min:1',
+            'numero'                => 'integer|min:1',
+            'email'                 => 'email',
+            'emailsolicitudes'      => 'email',
+        ];
+
+        $this->validate($request, $rules);
+
+        if ($request->has('ciudad_id')) {
+            $curaduria->ciudad_id = $request->ciudad_id;
+        }
+        if ($request->has('numero')) {
+            $curaduria->numero = $request->numero;
+        }
+        if ($request->has('email')) {
+            $curaduria->email = $request->email;
+        }
+        if ($request->has('emailsolicitudes')) {
+            $curaduria->emailsolicitudes = $request->emailsolicitudes;
+        }
+        if ($request->has('bucket')) {
+            $curaduria->bucket = $request->bucket;
+        }
+        if ($request->hasFile('logo')) {
+            Storage::disk('public')->delete($curaduria->logo);
+            $curaduria->logo = $request->file('logo')->store('', 'public');
+        }
+
+        if (!$curaduria->isDirty()) {  //isDirty() negado es lo mismo que isClean()
+            //return response()->json(['error' => 'Se debe especificar al menos un valor diferente para actualizar', 'code' => 422], 422);
+            return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar', 422);
+        }
+
+        $curaduria->save();
+
+        return $this->showOne($curaduria);
+
     }
 }

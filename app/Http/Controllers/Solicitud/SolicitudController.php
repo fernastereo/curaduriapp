@@ -36,8 +36,8 @@ class SolicitudController extends ApiController
     public function verify($token)
     {
         $solicitud = Solicitud::where('token', $token)->firstOrFail();
-        // $solicitud->token = null;
-        // $solicitud->save();
+        $solicitud->token = null;
+        $solicitud->save();
 
         /*Aqui debe enviar dos mails
         Uno para la curaduria con la informacion de la solicitud
@@ -47,6 +47,22 @@ class SolicitudController extends ApiController
         Mail::to($solicitud->solicitante->email)->send(New SolicitudResponse($solicitud));
 
         return view('solicitud.confirmed');
+    }
+
+    /**
+     * Reenvía el correo para verificar el email de la solicitud
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function resend(Solicitud $solicitud)
+    {
+        if ($solicitud->token == null) {
+            return $this->errorResponse('Esta solicitud ya fue verificada', 409);
+        }
+
+        Mail::to($solicitud->solicitante->email)->send(New SolicitudSaved($solicitud));
+
+        return $this->showMessage('El correo de verificación ha sido enviado');
     }
 
     /**
@@ -76,8 +92,6 @@ class SolicitudController extends ApiController
 
         DB::beginTransaction();
         try{
-            // $id = Solicitante::where('identificacion', $request->solidentificacion)->get();
-            
             $solicitante = Solicitante::create([
                 'identificacion' => $request->has('solidentificacion') ? $request->solidentificacion : null,
                 'nombre' => $request->has('solnombre') ? $request->solnombre : null,
