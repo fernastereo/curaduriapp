@@ -72,3 +72,4 @@ Solicitud
 */
 Route::resource('solicituds', 'Solicitud\SolicitudController', ['only' => ['index', 'show', 'store']]);
 Route::get('solicituds/{token}/verify', 'Solicitud\SolicitudController@verify')->name('solicituds.verify');
+Route::get('solicituds/{solicitud}/resend', 'Solicitud\SolicitudController@resend')->name('solicituds.resend');
