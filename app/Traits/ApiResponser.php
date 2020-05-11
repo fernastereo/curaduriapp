@@ -21,16 +21,16 @@ trait ApiResponser{
 
   protected function showAll(Collection $collection, $code = 200){
     //Muestra una respuesta con multiples elementos
-    return $this->successResponse(['data' => $collection], $code);
+    return $this->successResponse($collection, $code);
   }
 
   protected function showOne(Model $instance, $code = 200){
     //Muestra respuesta para una unica instancia
-    return $this->successResponse(['data' => $instance], $code);
+    return $this->successResponse($instance, $code);
   }
 
   protected function showMessage($message, $code = 200){
     //Muestra respuesta para una unica instancia
-    return $this->successResponse(['data' => $message], $code);
+    return $this->successResponse($message, $code);
   }
 }
