@@ -46,7 +46,7 @@ class SolicitudController extends ApiController
         Mail::to($solicitud->curaduria->emailsolicitudes)->send(New SolicitudVerified($solicitud));
         Mail::to($solicitud->solicitante->email)->send(New SolicitudResponse($solicitud));
 
-        return view('solicitud.confirmed');
+        return view('solicitud.confirmed', ['solicitud' => $solicitud]);
     }
 
     /**
@@ -73,7 +73,8 @@ class SolicitudController extends ApiController
      */
     public function store(Request $request)
     {
-        // return $request->file('anexos');
+        
+        // return $request->anexos;
         
         $rules = [
             'objetolicencia_id'         => 'required',
