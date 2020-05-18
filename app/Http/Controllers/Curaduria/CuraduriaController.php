@@ -28,7 +28,38 @@ class CuraduriaController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        // return $request->emailsolicitudes;
+
+        $rules = [
+            'ciudad_id'             => 'integer|min:1',
+            'numero'                => 'integer|min:1',
+            'email'                 => 'required|email',
+            'emailsolicitudes'      => 'required|email',
+            'curador'               => 'required',
+            'direccion'             => 'required',
+            'telefono'              => 'required'
+        ];
+
+        $this->validate($request, $rules);
+
+        $curaduria = Curaduria::create([
+            'ciudad_id' => $request->ciudad_id,
+            'numero' => $request->numero,
+            'curador' => $request->curador,
+            'idcurador' => $request->idcurador,
+            'direccion' => $request->direccion,
+            'telefono' => $request->telefono,
+            'email' => $request->email,
+            'web' => $request->web,
+            'emailsolicitudes' => $request->emailsolicitudes,
+            'responsesolicitudes' => $request->responsesolicitudes,
+            'fechaini' => $request->fechaini,
+            'estado'  => Curaduria::CURADURIA_ACTIVA,
+            'bucket' => $request->bucket,
+            'logo' => $request->logo->store('', 'public'),
+        ]);
+
+        return $this->showOne($curaduria);
     }
 
     /**
