@@ -19,6 +19,8 @@ class Curaduria extends Model
         'email',
         'web',
         'logo',
+        'emailsolicitudes',
+        'responsesolicitudes',
         'fechaini',
         'estado'
     ];
