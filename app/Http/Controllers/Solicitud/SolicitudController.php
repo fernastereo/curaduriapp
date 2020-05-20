@@ -74,8 +74,6 @@ class SolicitudController extends ApiController
     public function store(Request $request)
     {
         
-        // return $request->anexos;
-        
         $rules = [
             'objetolicencia_id'         => 'required',
             'licenciaanteriornumero'    => 'nullable|numeric|max:4',
