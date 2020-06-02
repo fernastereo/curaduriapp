@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Solicitud;
 
+use App\Curaduria;
 use App\Solicitud;
 use App\Solicitante;
 use App\Solicitudanexo;
@@ -161,9 +162,12 @@ class SolicitudController extends ApiController
     {
         
         try{
+            $id = $request->has('id') ? $request->id : null;
             $folder = $request->has('folder') ? $request->folder : null;
             $archivo = $request->has('archivo') ? $request->file('archivo') : null;
             
+            $curaduria = Curaduria::findOrFail($id);
+            $folder = $curaduria->bucket . '/' . $folder;
             /*Para enviar a S3: 
             Crear usuario en AWS y asignarles las policies hacia el bucket (copiar de otro)
             instalar esto: composer require league/flysystem-aws-s3-v3
