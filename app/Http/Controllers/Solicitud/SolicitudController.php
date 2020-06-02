@@ -118,7 +118,7 @@ class SolicitudController extends ApiController
                 En config/filesystem declarar el bucket
                 En .env colocar las credenciales
                 */
-                $storagePath = Storage::disk('solicitudfiles')->put($solicitud->curaduria->bucket . '/tmp', $anexo, 'public');
+                $storagePath = Storage::disk('solicitudfiles')->put('solicituds_files/' . $solicitud->curaduria->bucket . '/tmp', $anexo, 'public');
                 //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
                 $url = Storage::url($storagePath);
                 //Guardo la ruta obtenida en el paso anterior en la BD para poder referenciarla
