@@ -74,7 +74,7 @@ class SolicitudController extends ApiController
      */
     public function store(Request $request)
     {
-        
+        // return $request;
         $rules = [
             'objetolicencia_id'         => 'required',
             'licenciaanteriornumero'    => 'nullable|numeric|max:4',
@@ -85,7 +85,6 @@ class SolicitudController extends ApiController
             'soltelefono'               => 'required',
             'solemail'                  => 'required|email',
             'descripcion'               => 'nullable',
-            // 'anexos'                    => 'array'
         ];
 
         $this->validate($request, $rules);
@@ -110,7 +109,8 @@ class SolicitudController extends ApiController
                 'token' => str_random(50)
             ]);
 
-            $anexos = $request->has('anexos') ? $request->file('anexos') : null;
+            // $anexos = $request->has('anexos') ? $request->file('anexos') : null;
+            $anexos = $request->has('anexos') ? $request->anexos : null;
             
             foreach ($anexos as $anexo) {
                 /*Para enviar a S3: 
@@ -119,12 +119,12 @@ class SolicitudController extends ApiController
                 En config/filesystem declarar el bucket
                 En .env colocar las credenciales
                 */
-                $storagePath = Storage::disk('solicitudfiles')->put('solicituds_files/' . $solicitud->curaduria->bucket . '/tmp', $anexo, 'public');
+                // $storagePath = Storage::disk('solicitudfiles')->put('solicituds_files/' . $solicitud->curaduria->bucket . '/tmp', $anexo, 'public');
                 //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
-                $url = Storage::url($storagePath);
+                // $url = Storage::url($storagePath);
                 //Guardo la ruta obtenida en el paso anterior en la BD para poder referenciarla
                 $document = new Solicitudanexo();
-                $document->file = $url;
+                $document->file = $anexo['path'];
                 $document->solicitud_id = $solicitud->id;
                 $document->save();
             }
