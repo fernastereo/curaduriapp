@@ -181,7 +181,7 @@ class SolicitudController extends ApiController
             $data['success'] = 'success';
             $data['path'] = $url;
         }catch(\Exception $e){
-            return $this->errorResponse('warning,Something Went Wrong!' . $e->getMessage(), 500);
+            return $this->errorResponse('warning, Something Went Wrong!' . $e->getMessage(), 500);
         }   
 
         return $data;
