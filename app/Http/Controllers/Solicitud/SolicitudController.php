@@ -161,12 +161,12 @@ class SolicitudController extends ApiController
     public function upload(Request $request)
     {
         
-            $id = $request->has('id') ? $request->id : null;
-            $folder = $request->has('folder') ? $request->folder : null;
-            $archivo = $request->has('archivo') ? $request->file('archivo') : null;
+            // $id = $request->has('id') ? $request->id : null;
+            // $folder = $request->has('folder') ? $request->folder : null;
+            // $archivo = $request->has('archivo') ? $request->file('archivo') : null;
             
-            $curaduria = Curaduria::findOrFail($id);
-            $folder = $curaduria->bucket . '/' . $folder;
+            // $curaduria = Curaduria::findOrFail($id);
+            // $folder = $curaduria->bucket . '/' . $folder;
             /*Para enviar a S3: 
             Crear usuario en AWS y asignarles las policies hacia el bucket (copiar de otro)
             instalar esto: composer require league/flysystem-aws-s3-v3
