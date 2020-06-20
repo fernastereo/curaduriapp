@@ -73,4 +73,4 @@ Solicitud
 Route::resource('solicituds', 'Solicitud\SolicitudController', ['only' => ['index', 'show', 'store']]);
 Route::get('solicituds/{token}/verify', 'Solicitud\SolicitudController@verify')->name('solicituds.verify');
 Route::get('solicituds/{solicitud}/resend', 'Solicitud\SolicitudController@resend')->name('solicituds.resend');
-Route::post('solicituds/upload', 'solicitud\SolicitudController@upload')->name('solicituds.upload');
+Route::post('solicituds/preupload', 'solicitud\SolicitudController@preupload')->name('solicituds.preupload');

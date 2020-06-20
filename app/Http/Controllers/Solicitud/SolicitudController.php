@@ -158,7 +158,7 @@ class SolicitudController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function upload(Request $request)
+    public function preupload(Request $request)
     {
         
             // $id = $request->has('id') ? $request->id : null;
