@@ -174,12 +174,12 @@ class SolicitudController extends ApiController
             En config/filesystem declarar el bucket
             En .env colocar las credenciales
             */
-            $storagePath = Storage::disk('solicitudfiles')->put('solicituds_files/' . $folder, $archivo, 'public');
+            // $storagePath = Storage::disk('solicitudfiles')->put('solicituds_files/' . $folder, $archivo, 'public');
             
             //Guardo la url completa para acceder al archivo dentro del bucket en la variable $url
-            $url = Storage::url($storagePath);
+            // $url = Storage::url($storagePath);
             $data['success'] = 'success';
-            $data['path'] = $url;
+            // $data['path'] = $url;
         }catch(\Exception $e){
             return $this->errorResponse('warning, Something Went Wrong!' . $e->getMessage(), 500);
         }   
