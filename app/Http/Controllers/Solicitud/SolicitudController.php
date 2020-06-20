@@ -161,7 +161,6 @@ class SolicitudController extends ApiController
     public function upload(Request $request)
     {
         
-        try{
             $id = $request->has('id') ? $request->id : null;
             $folder = $request->has('folder') ? $request->folder : null;
             $archivo = $request->has('archivo') ? $request->file('archivo') : null;
@@ -180,9 +179,9 @@ class SolicitudController extends ApiController
             // $url = Storage::url($storagePath);
             $data['success'] = 'success';
             // $data['path'] = $url;
-        }catch(\Exception $e){
-            return $this->errorResponse('warning, Something Went Wrong!' . $e->getMessage(), 500);
-        }   
+        // }catch(\Exception $e){
+        //     return $this->errorResponse('warning, Something Went Wrong!' . $e->getMessage(), 500);
+        // }   
 
         return $data;
 
