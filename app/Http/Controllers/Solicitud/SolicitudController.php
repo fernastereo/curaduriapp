@@ -160,6 +160,7 @@ class SolicitudController extends ApiController
      */
     public function preupload(Request $request)
     {
+        //Probar este metodo creandolo en un controlador aparte para comporbar si es por eso que devuelve el error 
         
             // $id = $request->has('id') ? $request->id : null;
             // $folder = $request->has('folder') ? $request->folder : null;
