@@ -74,3 +74,4 @@ Route::resource('solicituds', 'Solicitud\SolicitudController', ['only' => ['inde
 Route::get('solicituds/{token}/verify', 'Solicitud\SolicitudController@verify')->name('solicituds.verify');
 Route::get('solicituds/{solicitud}/resend', 'Solicitud\SolicitudController@resend')->name('solicituds.resend');
 Route::post('solicituds/preupload', 'solicitud\SolicitudController@preupload')->name('solicituds.preupload');
+Route::resource('solicitudsfiles', 'Solicitud\SolicitudfilesController', ['only' => ['store']]);
